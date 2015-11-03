@@ -18,4 +18,5 @@ class Api::V1::InvoiceItemsController < ApplicationController
   def invoice_item_params
     params.permit(:id, :item_id, :invoice_id, :quantity, :unit_price)
   end
+
 end
