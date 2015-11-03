@@ -5,6 +5,8 @@ class CreateCustomers < ActiveRecord::Migration
       t.string :last_name
       t.string :created_at
       t.string :updated_at
+
+      t.timestamps null: false
     end
   end
 end
