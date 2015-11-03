@@ -12,6 +12,10 @@ class Api::V1::InvoicesController < ApplicationController
   def find
     respond_with Invoice.find_by(invoice_params)
   end
+
+  def find_all
+    respond_with Invoice.where(invoice_params)
+  end
   
   private
 
