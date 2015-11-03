@@ -12,6 +12,10 @@ class Api::V1::MerchantsController < ApplicationController
   def find
     respond_with Merchant.find_by(merchant_params)
   end
+
+  def find_all
+    respond_with Merchant.where(merchant_params)
+  end
   
   private
 
