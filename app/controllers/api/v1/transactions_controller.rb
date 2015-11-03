@@ -12,6 +12,10 @@ class Api::V1::TransactionsController < ApplicationController
   def find
     respond_with Transaction.find_by(transaction_params)
   end
+
+  def find_all
+    respond_with Transaction.where(transaction_params)
+  end
   
   private
 
