@@ -20,6 +20,16 @@ class Api::V1::MerchantsController < ApplicationController
   def random
     respond_with Merchant.random
   end
+
+  def items
+    items = Item.where(merchant_params)
+    respond_with items
+  end
+
+  def invoices
+    invoices = Invoice.where(merchant_params)
+    respond_with invoices
+  end
   
   private
 
