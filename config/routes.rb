@@ -12,6 +12,12 @@ Rails.application.routes.draw do
       end
 
       resources :invoices, except: [:new, :edit] do
+	get "/transactions", to: "invoices#transactions"
+	get "/invoice_items", to: "invoices#invoice_items"
+	get "/items", to: "invoices#items"
+	get "/customer", to: "invoices#customer"
+	get "/merchant", to: "invoices#merchant"
+
 	collection do
 	  get "find"
 	  get "find_all"
@@ -38,6 +44,7 @@ Rails.application.routes.draw do
       resources :merchants, except: [:new, :edit] do
 	get "/items", to: "merchants#items"
 	get "/invoices", to: "merchants#invoices"
+
 	collection do
 	  get "find" 
 	  get "find_all"
