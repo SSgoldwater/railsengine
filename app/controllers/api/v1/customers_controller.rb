@@ -20,11 +20,19 @@ class Api::V1::CustomersController < ApplicationController
   def random
     respond_with Customer.random
   end
+
+  def invoices
+    respond_with Invoice.where(customer_params)
+  end
+  
+  def transactions
+    respond_with Transaction.joins(:invoice).where(invoices: customer_params)
+  end
   
   private
 
   def customer_params
-    params.permit(:first_name, :last_name, :id)
+    params.permit(:customer_id, :first_name, :last_name, :id)
   end
   
 end
