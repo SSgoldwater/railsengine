@@ -20,11 +20,19 @@ class Api::V1::ItemsController < ApplicationController
   def random
     respond_with Item.random
   end
+
+  def invoice_items
+    respond_with InvoiceItem.where(item_params)
+  end
+
+  def merchant
+    respond_with Merchant.joins(:items).find_by(items: { id: params["item_id"] })
+  end
   
   private
 
   def item_params
-    params.permit(:id, :name, :description, :unit_price, :merchant_id)
+    params.permit(:id, :item_id, :name, :description, :unit_price, :merchant_id)
   end
 
 end
