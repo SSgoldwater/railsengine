@@ -30,7 +30,7 @@ class Api::V1::InvoicesController < ApplicationController
   end
 
   def items
-    respond_with Item.where(invoice_params)
+    respond_with Item.joins(:invoices).where(invoice_items: invoice_params)
   end
   
   def customer
