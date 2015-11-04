@@ -6,7 +6,7 @@ class Api::V1::InvoiceItemsController < ApplicationController
   end
 
   def show 
-    respond_with InvoiceItems.find(params[:id])
+    respond_with InvoiceItem.find(params[:id])
   end
 
   def find
@@ -19,6 +19,14 @@ class Api::V1::InvoiceItemsController < ApplicationController
   
   def random
     respond_with InvoiceItem.random
+  end
+
+  def invoice
+    respond_with Invoice.joins(:invoice_items).find_by(invoice_items: { id: params["invoice_item_id"] })
+  end
+
+  def item
+    respond_with Item.joins(:invoice_items).find_by(invoice_items: { id: params["invoice_item_id"] })
   end
   
   private
