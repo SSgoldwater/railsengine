@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       end
         
       resources :invoice_items, except: [:new, :edit] do
+	get "/invoice", to: "invoice_items#invoice"
+	get "/item", to: "invoice_items#item"
 	collection do
 	  get "find"
 	  get "find_all"
