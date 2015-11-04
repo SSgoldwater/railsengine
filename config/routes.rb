@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :invoice_items, except: [:new, :edit] do
 	get "/invoice", to: "invoice_items#invoice"
 	get "/item", to: "invoice_items#item"
+
 	collection do
 	  get "find"
 	  get "find_all"
@@ -36,6 +37,9 @@ Rails.application.routes.draw do
       end
 
       resources :items, except: [:new, :edit] do
+	get "/invoice_items", to: "items#invoice_items"
+	get "/merchant", to: "items#merchant"
+
 	collection do
 	  get "find" 
 	  get "find_all"
