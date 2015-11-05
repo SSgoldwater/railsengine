@@ -13,6 +13,10 @@ gem 'unicorn'
 gem 'rspec-rails'
 gem 'responders'
 
+group :test do
+  gem 'simplecov'
+end
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
