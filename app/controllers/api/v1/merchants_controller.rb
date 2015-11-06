@@ -22,19 +22,23 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def items
-    items = Item.where(merchant_params)
-    respond_with items
+    respond_with Item.where(merchant_params)
   end
 
   def invoices
-    invoices = Invoice.where(merchant_params)
-    respond_with invoices
+    respond_with Invoice.where(merchant_params)
   end
   
+  def most_revenue
+    binding.pry
+
+    respond_with: InvoiceItem.order('unit_price * quantity DESC').first(params["quantity"])
+  end
+
   private
 
   def merchant_params
-    params.permit(:id, :name)
+    params.permit(:id, :name, :quantity)
   end
 
 end

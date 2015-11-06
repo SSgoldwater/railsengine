@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20151103005022) do
     t.integer  "item_id"
     t.integer  "invoice_id"
     t.integer  "quantity"
-    t.string   "unit_price"
+    t.integer  "unit_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
